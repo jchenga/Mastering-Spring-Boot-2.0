@@ -1,10 +1,8 @@
 package com.dineshonjava.accountservice.controller;
 
+import com.dineshonjava.accountservice.domain.Customer;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
@@ -23,8 +21,9 @@ public class CustomerController {
         return "Jack Cheng";
     }
 
+    @ApiOperation(value = "Returns customer object")
     @PostMapping("/name")
-    public String addCustomerName(@ApiParam(name="customerName", value = "Customer Name")String customerName) {
-        return "Jack Cheng ...";
+    public Customer addCustomerName(@ApiParam(name = "customer", value = "Customer object") @RequestBody Customer customer) {
+        return new Customer("John", "john@apple.com", "414.608.8987", "1234 14th Ave");
     }
 }
